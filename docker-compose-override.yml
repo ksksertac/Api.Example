@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  bookdb:
+    container_name: bookdb
+    restart: always
+    ports:
+      - "57000:1433"
+    volumes:
+      - bookdb_volume:/opt/mssql
+    environment:
+      - ACCEPT_EULA=1
+      - MSSQL_SA_PASSWORD=MyPass@word
+      - MSSQL_PID=Developer
+      - MSSQL_USER=sa
+  sample.api:
+    container_name: sample.api
+    restart: on-failure
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Server=localhost;Database=BookDb; User=sa; Password=MyPass@word"
+    ports:
+      - "5001:80"
+    depends_on:
+      - bookdb
