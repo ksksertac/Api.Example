@@ -21,6 +21,18 @@ namespace Sample.Api.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Retrieves an book list
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /authors/3/books?pageNumber=1&pageSize=10&order=id;asc&filter=isbn_=AA
+        ///
+        /// </remarks>
+        /// <response code="20O">Book list</response>
         [HttpGet]
         public async Task<IActionResult> GetList(int authorId, [FromQuery] FopQuery request)
         {
@@ -35,6 +47,19 @@ namespace Sample.Api.Controllers
             });
         }
 
+        /// <summary>
+        /// Retrieves a specific book
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /authors/3/books/3
+        ///
+        /// </remarks>
+        /// <response code="200">If there is a record</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpGet("{id}")]
         public ActionResult<BookDto> Get(int authorId, int id)
         {
@@ -45,6 +70,23 @@ namespace Sample.Api.Controllers
             return bookDto;
         }
 
+        /// <summary>
+        /// Creates a Book.
+        /// </summary>
+        /// <param name="BookDto"></param>
+        /// <returns>A newly created Book</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /authors/3/books
+        ///     {
+        ///         "isbn": "AA-11-23-1",
+        ///         "name": ".Net Core 3.1",
+        ///         "authorId": 3
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Record was created</response>
         [HttpPost]
         public ActionResult Post(int authorId, BookDto bookDto)
         {
@@ -54,7 +96,26 @@ namespace Sample.Api.Controllers
             return CreatedAtAction("Get", new { id = book.Id, authorId = authorId }, book);
         }
 
-
+        /// <summary>
+        /// Updates a Book.
+        /// </summary>
+        /// <param name="id">Book Id</param>
+        /// <param name="BookDto">Book</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /authors/3/authors
+        ///     {
+        ///         "id": 3,
+        ///         "isbn": "AA-11-23-1",
+        ///         "name": ".Net Core 5",
+        ///         "authorId": 3
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Record was updated</response>
+        /// <response code="201">Returns the newly created item</response>
         [HttpPut]
         public ActionResult Put(int authorId, BookDto bookDto)
         {
@@ -73,6 +134,28 @@ namespace Sample.Api.Controllers
             return Ok();
         }
 
+         /// <summary>
+        /// Partially update a Book.
+        /// </summary>
+        /// <param name="id">Book Id</param>
+        /// <param name="patchDocument">Field to update</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PATCH /authors/3/books/3
+        ///     [
+        ///       {
+        ///          "op": "replace",
+        ///          "path": "/name",
+        ///          "value": ".Net Core 3"
+	    ///       }
+        ///     ]
+        ///
+        /// </remarks>
+        /// <response code="200">Record was updated</response>
+        /// <response code="400">If the item is null</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpPatch("{id}")]
         public IActionResult PartiallyUpdate(int authorId, int id, [FromBody] JsonPatchDocument<BookDto> patchDocument)
         {
@@ -93,7 +176,20 @@ namespace Sample.Api.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// Delete a Book.
+        /// </summary>
+        /// <param name="authorId">Author Id</param>
+        /// <param name="id">Book Id</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     DELETE /authors/3/books/3
+        ///
+        /// </remarks>
+        /// <response code="204">Record  was deleted</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpDelete("{id}")]
         public ActionResult Delete(int authorId, int id)
         {

@@ -34,7 +34,7 @@ namespace Sample.Api.Controllers
         ///     GET /authors?pageNumber=1&pageSize=10&order=id;asc&filter=firstName_=V
         ///
         /// </remarks>
-        /// <response code="20O">Author was updated</response>
+        /// <response code="20O">Author list</response>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] FopQuery request)
         {
@@ -62,8 +62,8 @@ namespace Sample.Api.Controllers
         ///     GET /authors/3
         ///
         /// </remarks>
-        /// <response code="200">if there is a record</response>
-        /// <response code="404">if the item does not exist</response>
+        /// <response code="200">If there is a record</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpGet("{id}")]
         public ActionResult<AuthorDto> Get(int id)
         {
@@ -142,11 +142,13 @@ namespace Sample.Api.Controllers
         /// Sample request:
         ///
         ///     PATCH /authors
-        ///     {
+        ///     [
+        ///       {
         ///         "op": "replace",
         ///         "path": "/firstname",
         ///         "value": "Benjamin"
-	    ///     }
+	    ///       }
+        ///     ]
         ///
         /// </remarks>
         /// <response code="200">Record was updated</response>
@@ -175,7 +177,7 @@ namespace Sample.Api.Controllers
         /// <summary>
         /// Delete an Author.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Author Id</param>
         /// <returns></returns>
         /// <remarks>
         /// Sample request:
