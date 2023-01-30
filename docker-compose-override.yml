@@ -10,14 +10,13 @@ services:
       - MSSQL_SA_PASSWORD=MyPass@word
       - MSSQL_PID=Developer
       - MSSQL_USER=SA
-  Sample.api:
-    container_name: Sample.api
+  sample_api:
+    container_name: sample_api
     restart: on-failure
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://localhost:5001
-      - "ConnectionStrings:DefaultConnection=Server=localhost;Database=BookDb; User=sa; Password=MyPass@word"
+      - ASPNETCORE_URLS=http://+:5001
     ports:
-      - "5001:80"
+      - "5001:5001"
     depends_on:
       - bookdb

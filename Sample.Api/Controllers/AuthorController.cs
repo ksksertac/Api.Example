@@ -26,7 +26,7 @@ namespace Sample.Api.Controllers
         /// <summary>
         /// Retrieves an author list
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">Filter</param>
         /// <returns></returns>
         /// <remarks>
         /// Sample request:
@@ -89,13 +89,19 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="201">Record was created</response>
+        /// <response code="404">If The Author does not exist</response>
         [HttpPost]
         public ActionResult Post(AuthorDto authorDto)
         {
+            if (authorDto == null)
+            {
+                return BadRequest();
+            }
+
             var author = _mapper.Map<Author>(authorDto);
             _bookLibrary.Authors.Add(author);
             _bookLibrary.SaveChanges();
-            return CreatedAtAction("Get", new { id = author.Id }, authorDto);
+            return CreatedAtAction("Get", new { id = author.Id }, author);
         }
 
         /// <summary>
@@ -117,9 +123,15 @@ namespace Sample.Api.Controllers
         /// </remarks>
         /// <response code="200">Record was updated</response>
         /// <response code="201">Returns the newly created item</response>
+        /// <response code="404">If The Author does not exist</response>
         [HttpPut("{id}")]
         public ActionResult Put(int Id, AuthorDto authorDto)
         {
+            if (authorDto == null)
+            {
+                return BadRequest();
+            }
+            
             var author = _mapper.Map<Author>(authorDto);
             if (!_bookLibrary.Authors.Any(x => x.Id == authorDto.Id))
             {

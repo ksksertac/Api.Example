@@ -55,6 +55,8 @@ using (var scope = app.Services.CreateScope())
     var log = loggerFactory.CreateLogger<Program>();
     try
     {
+        log.LogInformation("Bağlantı sağlanıyor");
+        log.LogInformation("ConnectionString : "+builder.Configuration.GetConnectionString("Default"));
         var db = scope.ServiceProvider.GetRequiredService<BookLibraryContext>();
         db.Database.Migrate();
     }

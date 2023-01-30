@@ -2,7 +2,7 @@ version: "3.8"
 services:
   bookdb:
     image: mcr.microsoft.com/azure-sql-edge
-  Sample.api:
+  sample_api:
     image: sample_api_image
     build:
       context: .
