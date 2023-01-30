@@ -63,7 +63,7 @@ namespace Sample.Api.Test
         }
 
         [Fact]
-        public void UpdateBookWithTestData_ThenOk_Test(BookDto dto)
+        public void UpdateBookWithTestData_ThenOk_Test()
         {
 
             var result = _controller.Put(1,new BookDto(){ Id = 1, ISBN = "AA-11-13",Name = "Unit Test Book",AuthorId = 1 }) as OkResult;
