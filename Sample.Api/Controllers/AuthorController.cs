@@ -135,6 +135,7 @@ namespace Sample.Api.Controllers
                 _bookLibrary.SaveChanges();
                 return CreatedAtAction("Get", new { id = author.Id }, authorDto);
             }
+            _bookLibrary.ChangeTracker.Clear();
             _bookLibrary.Authors.Update(author);
             _bookLibrary.SaveChanges();
             return Ok();

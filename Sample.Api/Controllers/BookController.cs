@@ -154,6 +154,7 @@ namespace Sample.Api.Controllers
                 _bookLibrary.SaveChanges();
                 return CreatedAtAction("Get", new { id = book.Id, authorId = authorId }, bookDto);
             }
+            _bookLibrary.ChangeTracker.Clear();
             _bookLibrary.Books.Update(book);
             _bookLibrary.SaveChanges();
             return Ok();
