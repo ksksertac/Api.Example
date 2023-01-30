@@ -131,7 +131,7 @@ namespace Sample.Api.Controllers
             {
                 return BadRequest();
             }
-            
+            authorDto.Id = Id;
             var author = _mapper.Map<Author>(authorDto);
             if (!_bookLibrary.Authors.Any(x => x.Id == authorDto.Id))
             {
