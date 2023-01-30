@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Sample.Models;
-using Sample.Middlewares;
+using Sample.Api.Models;
+using Sample.Api.Middlewares;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;

@@ -9,4 +9,4 @@ RUN dotnet publish Sample/*.csproj -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /app
 COPY --from=build /app/out .
-ENTRYPOINT [ "dotnet","Sample.dll" ]
+ENTRYPOINT [ "dotnet","Sample.Api.dll" ]

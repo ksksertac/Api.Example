@@ -1,13 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Sample.Models;
-using Sample.Models.Dto;
-using Sample.Models.Entities;
+using Sample.Api.Models;
+using Sample.Api.Models.Dto;
+using Sample.Api.Models.Entities;
 using Fop;
 using Microsoft.AspNetCore.JsonPatch;
 using Fop.FopExpression;
 
-namespace Sample.Controllers
+namespace Sample.Api.Controllers
 {
     [Route("api/v1/authors/{authorId}/books")]
     [ApiController]

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sample.Models.Entities;
+using Sample.Api.Models.Entities;
 
-namespace Sample.Models
+namespace Sample.Api.Models
 {
     public class BookLibraryContext : DbContext
     {

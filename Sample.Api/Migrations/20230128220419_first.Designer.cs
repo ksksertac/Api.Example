@@ -2,17 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sample.Models;
+using Sample.Api.Models;
 
 #nullable disable
 
-namespace Sample.Migrations
+namespace Sample.Api.Migrations
 {
     [DbContext(typeof(BookLibraryContext))]
-    partial class BookLibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20230128220419_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace Sample.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Sample.Models.Entities.Author", b =>
+            modelBuilder.Entity("Sample.Api.Models.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +60,7 @@ namespace Sample.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Sample.Models.Entities.Book", b =>
+            modelBuilder.Entity("Sample.Api.Models.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,9 +118,9 @@ namespace Sample.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Sample.Models.Entities.Book", b =>
+            modelBuilder.Entity("Sample.Api.Models.Entities.Book", b =>
                 {
-                    b.HasOne("Sample.Models.Entities.Author", "Author")
+                    b.HasOne("Sample.Api.Models.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -127,7 +129,7 @@ namespace Sample.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("Sample.Models.Entities.Author", b =>
+            modelBuilder.Entity("Sample.Api.Models.Entities.Author", b =>
                 {
                     b.Navigation("Books");
                 });

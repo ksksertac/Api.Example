@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Sample/bin/Debug/net6.0/Sample.dll",
+            "program": "${workspaceFolder}/Sample.Api/bin/Debug/net6.0/Sample.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Sample",
+            "cwd": "${workspaceFolder}/Sample.Api",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

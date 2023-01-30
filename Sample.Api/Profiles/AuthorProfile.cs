@@ -1,8 +1,8 @@
 using AutoMapper;
-using Sample.Models.Dto;
-using Sample.Models.Entities;
+using Sample.Api.Models.Dto;
+using Sample.Api.Models.Entities;
 
-namespace Sample.Profiles
+namespace Sample.Api.Profiles
 {
     public class AuthorProfile : Profile
     {

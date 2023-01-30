@@ -1,8 +1,8 @@
 using System.Net;
 using System.Text.Json;
-using Sample.Models.Api;
+using Sample.Api.Models.Api;
 
-namespace Sample.Middlewares
+namespace Sample.Api.Middlewares
 {
     public class ExceptionHandlingMiddleware
     {

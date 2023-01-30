@@ -1,7 +1,7 @@
 using System.Net;
 using Newtonsoft.Json;
 
-namespace Sample.Middlewares
+namespace Sample.Api.Middlewares
 {
     public class ResponseWrapper
     {
@@ -60,7 +60,7 @@ namespace Sample.Middlewares
 
     public class CommonApiResponse
     {
-        public static CommonApiResponse Create(HttpStatusCode statusCode, object result = null)
+        public static CommonApiResponse Create(HttpStatusCode statusCode, object result)
         {
             return new CommonApiResponse(statusCode, result);
         }
@@ -70,7 +70,7 @@ namespace Sample.Middlewares
         public string timestamp { get; set; }
         public bool success { get; set; }
 
-        protected CommonApiResponse(HttpStatusCode statusCode, object result = null)
+        protected CommonApiResponse(HttpStatusCode statusCode, object result)
         {
             timestamp = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
             switch (statusCode)

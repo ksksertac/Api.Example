@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sample.Models.Entities
+namespace Sample.Api.Models.Entities
 {
     public class Author
     {

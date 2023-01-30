@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Sample.Models.Dto
+namespace Sample.Api.Models.Dto
 {
     public record BookDto
     {

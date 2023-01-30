@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Sample.Migrations
+namespace Sample.Api.Migrations
 {
     public partial class first : Migration
     {

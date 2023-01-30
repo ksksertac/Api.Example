@@ -1,4 +1,4 @@
-namespace Sample.Models.Api;
+namespace Sample.Api.Models.Api;
 
 public class Response
 {
