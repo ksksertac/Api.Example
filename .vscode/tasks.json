@@ -36,6 +36,23 @@
                 "${workspaceFolder}/Sample.Api/Sample.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+
+        {
+            "label": "build1",
+            "command": "dotnet",
+            "type": "shell",
+             "args": [
+                "build",
+                "${workspaceFolder}/Sample.Api.Test/Sample.Api.Test.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
         }
     ]
 }

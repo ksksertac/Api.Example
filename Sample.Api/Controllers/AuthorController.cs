@@ -6,6 +6,7 @@ using Sample.Api.Models.Entities;
 using Microsoft.AspNetCore.JsonPatch;
 using Fop;
 using Fop.FopExpression;
+using Serilog.Core;
 
 namespace Sample.Api.Controllers
 {
@@ -14,13 +15,11 @@ namespace Sample.Api.Controllers
     public class AuthorController : ControllerBase
     {
         private IMapper _mapper { get; }
-        private readonly ILogger<AuthorController> _logger;
         private readonly BookLibraryContext _bookLibrary;
-        public AuthorController(BookLibraryContext bookLibrary, IMapper mapper, ILogger<AuthorController> logger)
+        public AuthorController(BookLibraryContext bookLibrary, IMapper mapper)
         {
             _bookLibrary = bookLibrary;
             _mapper = mapper;
-            _logger = logger;
         }
 
         /// <summary>
@@ -62,12 +61,12 @@ namespace Sample.Api.Controllers
         /// <response code="200">If there is a record</response>
         /// <response code="404">If the author does not exist</response>
         [HttpGet("{id}")]
-        public ActionResult<AuthorDto> Get(int id)
+        public IActionResult Get(int id)
         {
             var author = _bookLibrary.Authors.FirstOrDefault(p => p.Id == id);
             if (author is null) return NotFound();
             var authorDto = _mapper.Map<AuthorDto>(author);
-            return authorDto;
+            return Ok(authorDto);
         }
 
         /// <summary>
@@ -201,7 +200,9 @@ namespace Sample.Api.Controllers
         {
             var author = _bookLibrary.Authors.FirstOrDefault(p => p.Id == id);
             if (author is null) return NotFound();
-
+            _bookLibrary.Books.Where(x=>x.AuthorId == id).ToList().ForEach(book=>{
+                 _bookLibrary.Remove(book);
+            });
             _bookLibrary.Remove(author);
             _bookLibrary.SaveChanges();
             return NoContent();

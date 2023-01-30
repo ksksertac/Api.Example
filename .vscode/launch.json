@@ -18,7 +18,8 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS" : "http://localhost:5001"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -28,6 +29,19 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
+        },
+
+        {
+            "name": "Test Launch",
+            "type": "coreclr",
+            "request": "launch",
+           
+            "preLaunchTask": "build1",
+            "program": "${workspaceFolder}/Sample.Api.Test/bin/Debug/net6.0/Sample.Api.Test.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
         }
     ]
 }

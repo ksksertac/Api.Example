@@ -10,7 +10,7 @@ namespace Sample.Api.Models.Dto
         }
         public int Id { get; set; }	
         [Required]
-        [StringLength(10, ErrorMessage = "Name length can't be more than 10.")]
+        [StringLength(250, ErrorMessage = "ISBN length can't be more than 250.")]
         public string ISBN { get; set; }
         [Required]
         [StringLength(250, ErrorMessage = "Name length can't be more than 250.")]

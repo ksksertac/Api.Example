@@ -66,7 +66,7 @@ namespace Sample.Api.Controllers
         /// <response code="200">If there is a record</response>
         /// <response code="404">If The Author or the book does not exist</response>
         [HttpGet("{id}")]
-        public ActionResult<BookDto> Get(int authorId, int id)
+        public IActionResult Get(int authorId, int id)
         {
             if (!_bookLibrary.Authors.Any(x => x.Id == authorId)) return NotFound();
 
@@ -74,7 +74,7 @@ namespace Sample.Api.Controllers
             if (book is null) return NotFound();
 
             var bookDto = _mapper.Map<BookDto>(book);
-            return bookDto;
+            return Ok(bookDto);
         }
 
         /// <summary>

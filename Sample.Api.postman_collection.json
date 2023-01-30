@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "bf15f551-9fed-47e6-999e-ffbf87248050",
+		"name": "Sample.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5765182"
+	},
+	"item": [
+		{
+			"name": "Authors_Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}authors?pageNumber=1&pageSize=10&order=id;asc&filter=firstName_=V",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "order",
+							"value": "id;asc"
+						},
+						{
+							"key": "filter",
+							"value": "firstName_=V"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors_Post_1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Jessica\",\n    \"lastName\": \"May\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors",
+					"host": [
+						"{{baseUrl}}authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors_Post_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Sertaç\",\n    \"lastName\": \"YILDIRIM\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors",
+					"host": [
+						"{{baseUrl}}authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors_Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Jessica\",\n    \"lastName\": \"YILDIRIM\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/3",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors_Patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  \t{\n      \"op\": \"replace\",\n      \"path\": \"/firstname\",\n      \"value\": \"Benjamin\"\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/3",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors_Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/3",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books?pageNumber=1&pageSize=10&order=id;asc",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "order",
+							"value": "id;asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Post_1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"AA-11-23-1\",\n    \"name\": \".Net Core 3.1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Post_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"BB-11-11-1\",\n    \"name\": \".Net Core 3.1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 5,\n    \"isbn\": \"AA-11-23-1\",\n    \"name\": \".Net Core 5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Put_2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 7,\n    \"isbn\": \"BB-11-11-1\",\n    \"name\": \".Net Core 5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  \t{\n      \"op\": \"replace\",\n      \"path\": \"/name\",\n      \"value\": \".Net Core 3\"\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books/5",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books_Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}authors/4/books/7",
+					"host": [
+						"{{baseUrl}}authors"
+					],
+					"path": [
+						"4",
+						"books",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5001/api/v1/",
+			"type": "string"
+		}
+	]
+}

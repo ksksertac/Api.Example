@@ -8,7 +8,7 @@ namespace Sample.Api.Models.Entities
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "Name length can't be more than 50.")]
+        [StringLength(250, ErrorMessage = "Name length can't be more than 250.")]
         public string ISBN { get; set; }
         [Required]
         [StringLength(250, ErrorMessage = "Name length can't be more than 250.")]
