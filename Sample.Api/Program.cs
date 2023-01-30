@@ -10,7 +10,9 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BookLibraryContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"),b=>{
+        b.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+    });
 });
 builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true)
 .AddNewtonsoftJson(opts =>
