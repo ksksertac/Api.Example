@@ -40,9 +40,6 @@ namespace Sample.Api.Controllers
         {
             var fopRequest = FopExpressionBuilder<Author>.Build(request.Filter, request.Order, request.PageNumber, request.PageSize);
             var (filteredData, totalCount) = _bookLibrary.Authors.ApplyFop(fopRequest);
-            
-            _logger.LogInformation(fopRequest.OrderBy);
-
             var data = _mapper.Map<List<AuthorDto>>(filteredData);
             return Ok(new
             {
@@ -63,7 +60,7 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">If there is a record</response>
-        /// <response code="404">If the item does not exist</response>
+        /// <response code="404">If the author does not exist</response>
         [HttpGet("{id}")]
         public ActionResult<AuthorDto> Get(int id)
         {
@@ -89,7 +86,7 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="201">Record was created</response>
-        /// <response code="404">If The Author does not exist</response>
+        /// <response code="400">If the author is null</response>
         [HttpPost]
         public ActionResult Post(AuthorDto authorDto)
         {
@@ -123,7 +120,7 @@ namespace Sample.Api.Controllers
         /// </remarks>
         /// <response code="200">Record was updated</response>
         /// <response code="201">Returns the newly created item</response>
-        /// <response code="404">If The Author does not exist</response>
+        /// <response code="400">If the author is null</response>
         [HttpPut("{id}")]
         public ActionResult Put(int Id, AuthorDto authorDto)
         {
@@ -164,8 +161,8 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">Record was updated</response>
-        /// <response code="400">If the item is null</response>
-        /// <response code="404">If the item does not exist</response>
+        /// <response code="400">If the author is null</response>
+        /// <response code="404">If the author does not exist</response>
         [HttpPatch("{id}")]
         public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<AuthorDto> patchDocument)
         {
@@ -198,7 +195,7 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="204">Record  was deleted</response>
-        /// <response code="404">If the item does not exist</response>
+        /// <response code="404">If the author does not exist</response>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

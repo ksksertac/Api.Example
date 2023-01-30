@@ -95,7 +95,7 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="201">Record was created</response>
-        /// <response code="400">If the item is null</response>
+        /// <response code="400">If the book is null</response>
         /// <response code="404">If The Author does not exist</response>
         [HttpPost]
         public ActionResult Post(int authorId, BookDto bookDto)
@@ -134,7 +134,7 @@ namespace Sample.Api.Controllers
         /// </remarks>
         /// <response code="200">Record was updated</response>
         /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response>
+        /// <response code="400">If the book is null</response>
         /// <response code="404">If The Author does not exist</response>
         [HttpPut]
         public ActionResult Put(int authorId, BookDto bookDto)
@@ -180,8 +180,8 @@ namespace Sample.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">Record was updated</response>
-        /// <response code="400">If the item is null</response>
-        /// <response code="404">If the auhtor or the item does not exist</response>
+        /// <response code="400">If the book is null</response>
+        /// <response code="404">If the auhtor or the book does not exist</response>
         [HttpPatch("{id}")]
         public IActionResult PartiallyUpdate(int authorId, int id, [FromBody] JsonPatchDocument<BookDto> patchDocument)
         {
