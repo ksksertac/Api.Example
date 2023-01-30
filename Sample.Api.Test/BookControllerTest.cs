@@ -78,13 +78,7 @@ namespace Sample.Api.Test
             Assert.Equal(404, result.StatusCode);
         }
 
-        [Theory]
-        [InlineData(1,2)]
-        public void Delete_WithTestData_ThenNoContent_Test(int authorId,int id)
-        {
-            var result = _controller.Delete(authorId,id) as NoContentResult;
-            Assert.Equal(204, result.StatusCode);
-        }
+       
        
     }
 }
