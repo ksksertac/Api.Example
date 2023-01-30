@@ -6,4 +6,4 @@ services:
     image: sample_api_image
     build:
       context: .
-      dockerfile: Sample/Dockerfile
+      dockerfile: Sample.Api/Dockerfile

@@ -6,7 +6,7 @@ services:
     ports:
       - "1433:1433"
     environment:
-      - ACCEPT_EULA=Y
+      - ACCEPT_EULA=1
       - MSSQL_SA_PASSWORD=MyPass@word
       - MSSQL_PID=Developer
       - MSSQL_USER=SA
@@ -15,7 +15,7 @@ services:
     restart: on-failure
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://127.0.0.1:5001
+      - ASPNETCORE_URLS=http://localhost:5001
       - "ConnectionStrings:DefaultConnection=Server=localhost;Database=BookDb; User=sa; Password=MyPass@word"
     ports:
       - "5001:80"

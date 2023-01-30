@@ -24,7 +24,7 @@ namespace Sample.Api.Controllers
         }
 
         /// <summary>
-        /// Author list
+        /// Retrieves an author list
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace Sample.Api.Controllers
         ///     GET /authors?pageNumber=1&pageSize=10&order=id;asc&filter=firstName_=V
         ///
         /// </remarks>
-        /// <response code="20O"></response>
+        /// <response code="20O">Author was updated</response>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] FopQuery request)
         {
@@ -52,14 +52,14 @@ namespace Sample.Api.Controllers
         }
 
         /// <summary>
-        /// Give an Author.
+        /// Retrieves a specific author
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET /authors/1
+        ///     GET /authors/3
         ///
         /// </remarks>
         /// <response code="200">if there is a record</response>
@@ -83,13 +83,12 @@ namespace Sample.Api.Controllers
         ///
         ///     POST /authors
         ///     {
-        ///        "İd": 1,
         ///        "firstName": "First Name #1",
         ///        "lastName": "Last Name #1"
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Record created</response>
+        /// <response code="201">Record was created</response>
         [HttpPost]
         public ActionResult Post(AuthorDto authorDto)
         {
@@ -100,7 +99,7 @@ namespace Sample.Api.Controllers
         }
 
         /// <summary>
-        /// Update an Author.
+        /// Updates an Author.
         /// </summary>
         /// <param name="id">Author Id</param>
         /// <param name="authorDto">Author</param>
@@ -110,13 +109,13 @@ namespace Sample.Api.Controllers
         ///
         ///     PUT /authors
         ///     {
-        ///         "id": 1,
+        ///         "id": 3,
         ///         "firstName": "Jessica",
         ///         "lastName": "YILDIRIM"
         ///     }
         ///
         /// </remarks>
-        /// <response code="200">Record updated</response>
+        /// <response code="200">Record was updated</response>
         /// <response code="201">Returns the newly created item</response>
         [HttpPut("{id}")]
         public ActionResult Put(int Id, AuthorDto authorDto)
@@ -150,9 +149,9 @@ namespace Sample.Api.Controllers
 	    ///     }
         ///
         /// </remarks>
-        /// <response code="200">Record updated</response>
+        /// <response code="200">Record was updated</response>
         /// <response code="400">If the item is null</response>
-        /// <response code="404">if the item does not exist</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpPatch("{id}")]
         public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<AuthorDto> patchDocument)
         {
@@ -181,11 +180,11 @@ namespace Sample.Api.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     DELETE /authors/1
+        ///     DELETE /authors/3
         ///
         /// </remarks>
-        /// <response code="204">Record deleted</response>
-        /// <response code="404">if the item does not exist</response>
+        /// <response code="204">Record  was deleted</response>
+        /// <response code="404">If the item does not exist</response>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
