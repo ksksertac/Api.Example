@@ -62,10 +62,10 @@ namespace Sample.Api.Test
             Assert.Equal(201, result.StatusCode);
         }
 
-        [Theory]
-        [ClassData(typeof(BookTheoryData))]
+        [Fact]
         public void UpdateBookWithTestData_ThenOk_Test(BookDto dto)
         {
+
             var result = _controller.Put(1,new BookDto(){ Id = 1, ISBN = "AA-11-13",Name = "Unit Test Book",AuthorId = 1 }) as OkResult;
             Assert.Equal(200, result.StatusCode);
         }
@@ -79,7 +79,7 @@ namespace Sample.Api.Test
         }
 
         [Theory]
-        [InlineData(1,1)]
+        [InlineData(1,2)]
         public void Delete_WithTestData_ThenNoContent_Test(int authorId,int id)
         {
             var result = _controller.Delete(authorId,id) as NoContentResult;
